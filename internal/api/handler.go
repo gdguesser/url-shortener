@@ -34,7 +34,7 @@ func (h *URLHandler) ShortenURL(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"short_code": shortCode})
 }
 
-func (h *URLHandler) ResulveURL(c *gin.Context) {
+func (h *URLHandler) ResolveURL(c *gin.Context) {
 	shortCode := c.Param("short_code")
 
 	longURL, err := h.service.Resolve(shortCode)
