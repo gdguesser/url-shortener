@@ -19,7 +19,7 @@ func main() {
 	db.AutoMigrate(&models.URL{})
 
 	urlRepo := repository.NewURLRepository(db)
-	urlService := service.NewUrlShortenerService(urlRepo)
+	urlService := service.NewURLShortenerService(urlRepo)
 	urlHandler := api.NewURLHandler(urlService)
 
 	r := gin.Default()

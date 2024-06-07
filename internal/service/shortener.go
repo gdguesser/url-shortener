@@ -15,7 +15,7 @@ type urlShortenerService struct {
 	repo repository.URLRepository
 }
 
-func NewUrlShortenerService(repo repository.URLRepository) URLShortenerService {
+func NewURLShortenerService(repo repository.URLRepository) URLShortenerService {
 	return &urlShortenerService{repo: repo}
 }
 
