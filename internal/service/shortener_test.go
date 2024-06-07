@@ -22,6 +22,11 @@ func (m *MockURLRepository) GetByShortCode(code string) (*models.URL, error) {
 	return args.Get(0).(*models.URL), args.Error(1)
 }
 
+func (m *MockURLRepository) IncrementCounter(code string) error {
+	args := m.Called(code)
+	return args.Error(0)
+}
+
 func TestShorten(t *testing.T) {
 	mockRepo := new(MockURLRepository)
 	service := NewURLShortenerService(mockRepo)
@@ -40,6 +45,7 @@ func TestResolve(t *testing.T) {
 
 	shortCode := "abc123"
 	longURL := "https://example.com"
+	mockRepo.On("IncrementCounter", shortCode).Return(nil)
 	mockRepo.On("GetByShortCode", shortCode).Return(&models.URL{LongURL: longURL}, nil)
 
 	result, err := service.Resolve(shortCode)
