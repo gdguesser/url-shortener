@@ -1,7 +1,7 @@
 package models
 
 type URL struct {
-	ID        uint `gorm:"primaryKey"`
-	LongURL   uint `gorm:"not null"`
-	ShortCode uint `gorm:"uniqueIndex;not null"`
+	ID        uint   `gorm:"primaryKey"`
+	LongURL   string `gorm:"not null"`
+	ShortCode string `gorm:"uniqueIndex;not null"`
 }
