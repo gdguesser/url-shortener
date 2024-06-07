@@ -27,7 +27,7 @@ func normalizeURL(rawURL string) (string, error) {
 		return "", err
 	}
 	if u.Scheme == "" {
-		u.Scheme = "http"
+		u.Scheme = "https"
 	}
 	return u.String(), nil
 }
